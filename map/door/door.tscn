@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8u7t1xjh0eux"]
+
+[ext_resource type="Texture2D" uid="uid://8pl5ak1qxdkf" path="res://assets/EverRogueTileset 1.0 Packed Alpha.png" id="1_ayiso"]
+[ext_resource type="Script" path="res://map/door/door.gd" id="2_yd02g"]
+
+[node name="Door" type="Sprite2D"]
+texture = ExtResource("1_ayiso")
+centered = false
+region_enabled = true
+script = ExtResource("2_yd02g")

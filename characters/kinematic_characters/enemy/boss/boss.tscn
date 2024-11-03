@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://br8nlxstwx3ju"]
+
+[ext_resource type="PackedScene" uid="uid://cy82o2ooixkrj" path="res://characters/kinematic_characters/enemy/enemy.tscn" id="1_cbb67"]
+[ext_resource type="Script" path="res://characters/kinematic_characters/enemy/boss/boss.gd" id="2_71ku1"]
+
+[node name="Boss" instance=ExtResource("1_cbb67")]
+region_rect = Rect2(96, 192, 16, 16)
+script = ExtResource("2_71ku1")

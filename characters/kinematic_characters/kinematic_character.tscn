@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr2mvau7mw8f5"]
+
+[ext_resource type="Script" path="res://characters/kinematic_characters/kinematic_character.gd" id="1_b58b0"]
+[ext_resource type="Texture2D" uid="uid://8pl5ak1qxdkf" path="res://assets/EverRogueTileset 1.0 Packed Alpha.png" id="1_dh3s3"]
+
+[node name="KinematicCharacter" type="Sprite2D"]
+texture = ExtResource("1_dh3s3")
+centered = false
+region_enabled = true
+script = ExtResource("1_b58b0")

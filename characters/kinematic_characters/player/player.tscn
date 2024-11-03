@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://djvwylagxb45l"]
+
+[ext_resource type="PackedScene" uid="uid://dr2mvau7mw8f5" path="res://characters/kinematic_characters/kinematic_character.tscn" id="1_1be3n"]
+[ext_resource type="Script" path="res://characters/kinematic_characters/player/player.gd" id="2_m3sfa"]
+
+[node name="Player" instance=ExtResource("1_1be3n")]
+region_rect = Rect2(64, 192, 16, 16)
+script = ExtResource("2_m3sfa")

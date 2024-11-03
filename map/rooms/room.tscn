@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=4 uid="uid://b4yfqgkhh6nk1"]
+
+[ext_resource type="TileSet" uid="uid://2g315jfas156" path="res://map/rooms/tile_set.tres" id="1_e16qy"]
+[ext_resource type="Script" path="res://map/rooms/room.gd" id="2_fbyxy"]
+
+[node name="Room" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAHAAcAAAACAAAAAAAAAAcAAAACAAAAAAA=")
+tile_set = ExtResource("1_e16qy")
+script = ExtResource("2_fbyxy")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchors_preset = -1
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy82o2ooixkrj"]
+
+[ext_resource type="PackedScene" uid="uid://dr2mvau7mw8f5" path="res://characters/kinematic_characters/kinematic_character.tscn" id="1_ko7q0"]
+[ext_resource type="Script" path="res://characters/kinematic_characters/enemy/enemy.gd" id="2_t0qkv"]
+
+[node name="Enemy" instance=ExtResource("1_ko7q0")]
+region_rect = Rect2(80, 192, 16, 16)
+script = ExtResource("2_t0qkv")
