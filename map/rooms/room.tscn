@@ -9,7 +9,6 @@ tile_set = ExtResource("1_e16qy")
 script = ExtResource("2_fbyxy")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
-anchors_preset = -1
 offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2

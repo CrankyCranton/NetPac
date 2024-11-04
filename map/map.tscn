@@ -1,9 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsjwfo4harmuc"]
+[gd_scene load_steps=6 format=4 uid="uid://dsjwfo4harmuc"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_250s5"]
 [ext_resource type="PackedScene" uid="uid://djvwylagxb45l" path="res://characters/kinematic_characters/player/player.tscn" id="2_e6qxh"]
+[ext_resource type="PackedScene" uid="uid://b4yfqgkhh6nk1" path="res://map/rooms/room.tscn" id="3_83x0a"]
+[ext_resource type="PackedScene" uid="uid://c8u7t1xjh0eux" path="res://map/door/door.tscn" id="4_bdytv"]
+[ext_resource type="PackedScene" uid="uid://cy82o2ooixkrj" path="res://characters/kinematic_characters/enemy/enemy.tscn" id="5_1ddnd"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_250s5")
 
-[node name="Player" parent="." instance=ExtResource("2_e6qxh")]
+[node name="EntryRoom" parent="." instance=ExtResource("3_83x0a")]
+tile_map_data = PackedByteArray("AAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAHAAcAAAACAAAAAAAAAAcAAAACAAAAAAACAAUAAAACAAAAAAADAAUAAAACAAAAAAAEAAUAAAACAAAAAAAFAAUAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAAEAAIAAAACAAAAAAAFAAIAAAACAAAAAAA=")
+
+[node name="Door" parent="EntryRoom" instance=ExtResource("4_bdytv")]
+position = Vector2(48, 0)
+
+[node name="Door2" parent="EntryRoom" instance=ExtResource("4_bdytv")]
+position = Vector2(112, 48)
+
+[node name="Door3" parent="EntryRoom" instance=ExtResource("4_bdytv")]
+position = Vector2(64, 112)
+
+[node name="Door4" parent="EntryRoom" instance=ExtResource("4_bdytv")]
+position = Vector2(0, 64)
+
+[node name="Player" parent="EntryRoom" instance=ExtResource("2_e6qxh")]
+position = Vector2(48, 64)
+
+[node name="Enemy" parent="EntryRoom" instance=ExtResource("5_1ddnd")]
+position = Vector2(48, 0)
+
+[node name="Enemy2" parent="EntryRoom" instance=ExtResource("5_1ddnd")]
+position = Vector2(112, 48)
+
+[node name="Enemy3" parent="EntryRoom" instance=ExtResource("5_1ddnd")]
+position = Vector2(64, 112)
+
+[node name="Room" parent="." instance=ExtResource("3_83x0a")]
+position = Vector2(128, 0)
+tile_map_data = PackedByteArray("AAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAHAAcAAAACAAAAAAAAAAcAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAA=")
+
+[node name="Door" parent="Room" instance=ExtResource("4_bdytv")]
+position = Vector2(0, 48)
+
+[node name="Door2" parent="Room" instance=ExtResource("4_bdytv")]
+position = Vector2(112, 48)
+
+[node name="Enemy" parent="Room" instance=ExtResource("5_1ddnd")]
+position = Vector2(16, 16)
+
+[node name="Room2" parent="." instance=ExtResource("3_83x0a")]
+position = Vector2(256, 0)
+tile_map_data = PackedByteArray("AAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAHAAMAAAACAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAHAAcAAAACAAAAAAAAAAcAAAACAAAAAAA=")
+
+[node name="Door" parent="Room2" instance=ExtResource("4_bdytv")]
+position = Vector2(0, 48)

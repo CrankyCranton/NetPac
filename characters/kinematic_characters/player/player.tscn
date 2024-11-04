@@ -6,3 +6,8 @@
 [node name="Player" instance=ExtResource("1_1be3n")]
 region_rect = Rect2(64, 192, 16, 16)
 script = ExtResource("2_m3sfa")
+
+[node name="Label" type="Label" parent="." index="0"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "##"
