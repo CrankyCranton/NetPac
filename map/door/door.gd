@@ -1,18 +1,16 @@
+@tool
 class_name Door extends Sprite2D
 
 
-enum Sprites {
-	OPEN_DOOR,
-	CLOSED_DOOR,
-	STAIRS_UP,
-	STAIRS_DOWN,
-}
-
-const REGION_RECTS: Array[Rect2] = [
-
-]
-
-@export var sprite := Sprites.OPEN_DOOR:
+@export var outlet: Door = null:
 	set(value):
-		sprite = value
-		region_rect = REGION_RECTS[value]
+		if not is_node_ready():
+			await ready
+		outlet = value
+		pen.destination = Vector2.INF
+		if outlet:
+			pen.destination = to_local(outlet.global_position)
+			if not outlet.outlet:
+				outlet.outlet = self
+
+@onready var pen: Node2D = $Pen

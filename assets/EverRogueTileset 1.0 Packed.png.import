@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8pl5ak1qxdkf"
-path="res://.godot/imported/EverRogueTileset 1.0 Packed Alpha.png-c29af910954fcb3e85a9853dc250ccf6.ctex"
+uid="uid://dnehli3tqytj4"
+path="res://.godot/imported/EverRogueTileset 1.0 Packed.png-25062611ba7c46edfdb98d0da3da69fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/EverRogueTileset 1.0 Packed Alpha.png"
-dest_files=["res://.godot/imported/EverRogueTileset 1.0 Packed Alpha.png-c29af910954fcb3e85a9853dc250ccf6.ctex"]
+source_file="res://assets/EverRogueTileset 1.0 Packed.png"
+dest_files=["res://.godot/imported/EverRogueTileset 1.0 Packed.png-25062611ba7c46edfdb98d0da3da69fb.ctex"]
 
 [params]
 

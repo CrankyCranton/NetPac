@@ -5,13 +5,16 @@ const ANIM_SPEED := 0.25
 
 var tween: Tween = null
 
-@onready var room: Room = get_parent()
-@onready var tile_size := room.tile_set.tile_size
+@onready var room: Room = null:
+	set(_value):
+		pass
+	get:
+		return get_parent()
 
 
 func move(direction: Vector2i) -> bool:
-	var destination := position.snapped(tile_size) + Vector2(direction * tile_size)
-	if room.navigation.is_point_solid(Vector2i(destination) / tile_size):
+	var destination := position.snapped(Utils.TILE_SIZE) + Vector2(direction * Utils.TILE_SIZE)
+	if room.navigation.is_point_solid(Utils.pos2id(destination)):
 		return false
 	if tween != null:
 		tween.stop()
@@ -21,10 +24,6 @@ func move(direction: Vector2i) -> bool:
 	tween.tween_property(self, ^"position", destination, ANIM_SPEED)
 	tween.finished.connect(_on_tween_finished, CONNECT_ONE_SHOT)
 	return true
-
-
-func pos_to_id(pos: Vector2) -> Vector2i:
-	return Vector2i(pos) / tile_size
 
 
 func _on_tween_finished() -> void:

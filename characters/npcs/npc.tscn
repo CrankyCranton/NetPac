@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckfhj25pbymwt"]
 
-[ext_resource type="Texture2D" uid="uid://8pl5ak1qxdkf" path="res://assets/EverRogueTileset 1.0 Packed Alpha.png" id="1_0dv1s"]
+[ext_resource type="Texture2D" uid="uid://dnehli3tqytj4" path="res://assets/EverRogueTileset 1.0 Packed.png" id="1_7g6bt"]
 [ext_resource type="Script" path="res://characters/npcs/npc.gd" id="1_bxhag"]
 
 [node name="NPC" type="Sprite2D"]
-texture = ExtResource("1_0dv1s")
+texture = ExtResource("1_7g6bt")
 centered = false
 region_enabled = true
 script = ExtResource("1_bxhag")
