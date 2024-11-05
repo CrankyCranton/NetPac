@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Game Off 2024"
+config/name="NetPac"
 run/main_scene="res://map/map.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/viewport_width=128
-window/size/viewport_height=128
+window/size/viewport_height=144
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"

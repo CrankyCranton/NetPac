@@ -2,6 +2,7 @@ class_name Room extends TileMapLayer
 
 
 var navigation := AStarGrid2D.new()
+var max_gold := 0
 var children := {
 	"enemies": [],
 	"doors": [],
@@ -13,7 +14,19 @@ var children := {
 func _ready() -> void:
 	assert(tile_set.tile_size == Utils.TILE_SIZE)
 	catagorize_children()
-	set_up_navigation()
+
+	navigation.region = Rect2i(Vector2(), Vector2i(reference_rect.size) / tile_set.tile_size)
+	navigation.cell_size = tile_set.tile_size
+	navigation.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	navigation.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	navigation.update()
+
+	for cell in get_used_cells():
+		var cell_id := get_tile_id(cell)
+		if not cell_id.contains("w"):
+			navigation.set_point_solid(cell)
+		elif cell_id.contains("coin"):
+			max_gold += 1
 
 
 func catagorize_children() -> void:
@@ -22,17 +35,6 @@ func catagorize_children() -> void:
 			children.enemies.append(child)
 		elif child is Door:
 			children.doors.append(child)
-
-
-func set_up_navigation() -> void:
-	navigation.region = Rect2i(Vector2(), Vector2i(reference_rect.size) / tile_set.tile_size)
-	navigation.cell_size = tile_set.tile_size
-	navigation.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
-	navigation.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	navigation.update()
-	for cell in get_used_cells():
-		if not get_tile_id(cell).contains("w"):
-			navigation.set_point_solid(cell)
 
 
 func take_turn(player_pos_id: Vector2i) -> void:
@@ -45,7 +47,7 @@ func get_tile_id(coords: Vector2i) -> StringName:
 	if data:
 		return data.get_custom_data("ID")
 	else:
-		return &""
+		return &"null"
 
 
 func check_for_doors(player: Player) -> bool:
@@ -57,7 +59,30 @@ func check_for_doors(player: Player) -> bool:
 
 			player.reparent(room, false)
 			player.position = door.outlet.position
-			room.take_turn(Utils.pos2id(player.position))
+			player.start_pos = player.position
+			#room.take_turn(Utils.pos2id(player.position))
 			return true
 
 	return false
+
+
+func check_collisions(id: Vector2i) -> StringName:
+	var tile_id := get_tile_id(id)
+	if tile_id != &"null":
+		return tile_id
+
+	for child in get_children():
+		if child != reference_rect and Utils.pos2id(child.position) == id:
+			return child.name
+
+	return &"null"
+
+
+# Reset when the player dies.
+# Reset enemies to position they were in from the start of the game.
+# Reset the player to the position he was in when he entered the room.
+func reset() -> void:
+	if has_node(^"Player"):
+		get_node(^"Player").reset()
+	for enemy: Enemy in children.enemies:
+		enemy.reset()

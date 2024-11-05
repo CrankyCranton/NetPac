@@ -6,8 +6,13 @@ func _ready() -> void:
 	room.navigation.set_point_solid(Utils.pos2id(position))
 
 
+func reset() -> void:
+	room.navigation.set_point_solid(pos_id, false)
+	super()
+	room.navigation.set_point_solid(pos_id)
+
+
 func take_turn(player_pos_id: Vector2i) -> void:
-	var pos_id := Utils.pos2id(position)
 	room.navigation.set_point_solid(pos_id, false)
 	var path := room.navigation.get_id_path(pos_id, player_pos_id)
 
@@ -15,3 +20,9 @@ func take_turn(player_pos_id: Vector2i) -> void:
 		room.navigation.set_point_solid(pos_id)
 	else:
 		room.navigation.set_point_solid(path[1])
+
+
+func _on_collided(with: StringName) -> void:
+	if with == &"Player":
+		await room.get_node(NodePath(with)).die()
+		room.reset()
