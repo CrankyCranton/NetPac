@@ -1,6 +1,9 @@
 class_name Enemy extends KinematicCharacter
 
 
+@export var damage := 10
+
+
 func _ready() -> void:
 	await room.ready
 	room.navigation.set_point_solid(Utils.pos2id(position))
@@ -24,5 +27,4 @@ func take_turn(player_pos_id: Vector2i) -> void:
 
 func _on_collided(with: StringName) -> void:
 	if with == &"Player":
-		await room.get_node(NodePath(with)).die()
-		room.reset()
+		room.get_node(NodePath(with)).die(damage)
