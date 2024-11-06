@@ -10,11 +10,11 @@ class_name HUD extends CanvasLayer
 func reset() -> void:
 	gold_bar_damage.value = room_gold_bar.value
 	create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN
-			).tween_property(gold_bar_damage, ^"value", 0, 0.5)
+			).tween_property(gold_bar_damage, ^"value", 0, 1.0)
 	room_gold_bar.value = 0
 
 
-func set_gold(max_room_gold: int, room_gold: int, total_gold: int, damage_anim := false) -> void:
+func set_gold(max_room_gold: int, room_gold: int, total_gold: int) -> void:
 	gold_bar_damage.max_value = max_room_gold
 	room_gold_bar.max_value = max_room_gold
 	room_gold_bar.value = room_gold

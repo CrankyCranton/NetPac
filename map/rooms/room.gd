@@ -66,16 +66,17 @@ func check_for_doors(player: Player) -> bool:
 	return false
 
 
-func check_collisions(id: Vector2i) -> StringName:
+func check_collisions(id: Vector2i) -> Array[StringName]:
+	var collisions: Array[StringName] = []
 	var tile_id := get_tile_id(id)
 	if tile_id != &"null":
-		return tile_id
+		collisions.append(tile_id)
 
 	for child in get_children():
 		if child != reference_rect and Utils.pos2id(child.position) == id:
-			return child.name
+			collisions.append(child.name)
 
-	return &"null"
+	return collisions
 
 
 # Reset when the player dies.

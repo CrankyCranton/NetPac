@@ -28,7 +28,7 @@ func move(direction: Vector2i) -> bool:
 
 	if tile_id != &"null" and not tile_id.contains("w"):
 		return false
-	var collider := room.check_collisions(destination)
+	var colliders := room.check_collisions(destination)
 
 	set_pos_with_anim(Utils.id2pos(destination))
 	if direction.x > 0:
@@ -36,7 +36,7 @@ func move(direction: Vector2i) -> bool:
 	elif direction.x < 0:
 		flip_h = true
 
-	if collider != &"null":
+	for collider in colliders:
 		collided.emit(collider)
 	return true
 
