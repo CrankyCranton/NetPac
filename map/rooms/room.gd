@@ -25,8 +25,7 @@ func _ready() -> void:
 		var cell_id := get_tile_id(cell)
 		if not cell_id.contains("w"):
 			navigation.set_point_solid(cell)
-		elif cell_id.contains("coin"):
-			max_gold += 1
+		max_gold += get_tile_value(cell_id)
 
 
 func catagorize_children() -> void:
@@ -66,6 +65,16 @@ func check_for_doors(player: Player) -> bool:
 	return false
 
 
+func get_tile_value(id: StringName) -> int:
+	var value := 0
+	for flag in id.split(","):
+		if flag.begins_with("$") and flag.length() >= 2:
+			value = int(flag.substr(1, flag.length() - 1))
+			break
+
+	return value
+
+
 func check_collisions(id: Vector2i) -> Array[StringName]:
 	var collisions: Array[StringName] = []
 	var tile_id := get_tile_id(id)
@@ -79,9 +88,6 @@ func check_collisions(id: Vector2i) -> Array[StringName]:
 	return collisions
 
 
-# Reset when the player dies.
-# Reset enemies to position they were in from the start of the game.
-# Reset the player to the position he was in when he entered the room.
 func reset() -> void:
 	if has_node(^"Player"):
 		get_node(^"Player").reset()

@@ -70,7 +70,9 @@ func _on_collided(with: StringName) -> void:
 		room.get_node(NodePath(with)).flip_h = flip_h
 		await die()
 		room.reset()
-	elif with.contains("coin"):
-		gold[room] = gold.get_or_add(room, 0) + 1
+
+	var value := room.get_tile_value(with)
+	if value > 0:
+		gold[room] = gold.get_or_add(room, 0) + value
 		update_gold_counter()
 		room.set_cell(pos_id)

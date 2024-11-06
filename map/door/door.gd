@@ -12,6 +12,7 @@ class_name Door extends Sprite2D
 			pen.destination = to_local(outlet.global_position)
 			if not outlet.outlet:
 				outlet.outlet = self
+
 		pen.queue_redraw()
 
 @onready var pen: Node2D = $Pen
