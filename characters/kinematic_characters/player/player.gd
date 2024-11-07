@@ -34,8 +34,8 @@ func _process(_delta: float) -> void:
 			turn += 1
 	elif room.check_for_doors(self):
 		update_gold_counter()
-		turn += 1
-		#turn = 0
+		#turn += 1
+		turn = 0
 		frozen = true
 		await get_tree().create_timer(ANIM_SPEED).timeout
 		frozen = false
